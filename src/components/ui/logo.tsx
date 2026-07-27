@@ -1,22 +1,29 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+import stmLogo from "../../../public/images/stm-logo.png";
 
 /**
- * TEMPORARY text-based logo.
- * Replace with the official STM MACHINERY SVG/transparent-PNG when available
- * (drop it at /public/images/stm-logo.svg and swap this component for an
- * <Image>). Clearly marked temporary per the brief — see IMAGE_SOURCES.md.
+ * Official STM MACHINERY logo (navy wordmark + steel gear), transparent PNG.
+ * Placed on a subtle light frosted plate so the dark navy wordmark reads
+ * cleanly against the dark header/footer. Swap the source file at
+ * public/images/stm-logo.png to update everywhere.
  */
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, plate = true }: { className?: string; plate?: boolean }) {
   return (
-    <span className={cn("inline-flex items-baseline gap-2 select-none", className)}>
-      <span className="flex items-center">
-        <span className="grid h-8 w-8 place-items-center rounded-sm bg-accent font-display text-sm font-bold text-white">
-          S
-        </span>
-      </span>
-      <span className="font-display text-lg font-bold tracking-tight text-white">
-        STM<span className="text-accent-400"> MACHINERY</span>
-      </span>
+    <span
+      className={cn(
+        "inline-flex items-center",
+        plate && "rounded-md bg-white/90 px-2.5 py-1.5 shadow-sm",
+        className,
+      )}
+    >
+      <Image
+        src={stmLogo}
+        alt="STM MACHINERY"
+        priority
+        className="h-7 w-auto sm:h-8"
+        sizes="(max-width: 640px) 120px, 150px"
+      />
     </span>
   );
 }
