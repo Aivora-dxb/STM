@@ -69,6 +69,7 @@ export default function HomePage() {
             <ProductCard
               key={cat.slug}
               href={`/products-and-solutions/${cat.slug}`}
+              slug={cat.slug}
               name={cat.name}
               tagline={cat.tagline}
               delay={(i % 3) * 0.05}

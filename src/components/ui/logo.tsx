@@ -4,25 +4,19 @@ import stmLogo from "../../../public/images/stm-logo.png";
 
 /**
  * Official STM MACHINERY logo (navy wordmark + steel gear), transparent PNG.
- * Placed on a subtle light frosted plate so the dark navy wordmark reads
- * cleanly against the dark header/footer. Swap the source file at
+ * Shown larger and without a plate. A soft drop-shadow keeps the dark navy
+ * wordmark legible against the dark header. Swap the file at
  * public/images/stm-logo.png to update everywhere.
  */
-export function Logo({ className, plate = true }: { className?: string; plate?: boolean }) {
+export function Logo({ className }: { className?: string }) {
   return (
-    <span
-      className={cn(
-        "inline-flex items-center",
-        plate && "rounded-md bg-white/90 px-2.5 py-1.5 shadow-sm",
-        className,
-      )}
-    >
+    <span className={cn("inline-flex items-center", className)}>
       <Image
         src={stmLogo}
         alt="STM MACHINERY"
         priority
-        className="h-7 w-auto sm:h-8"
-        sizes="(max-width: 640px) 120px, 150px"
+        className="h-11 w-auto drop-shadow-[0_1px_6px_rgba(255,255,255,0.25)] sm:h-12"
+        sizes="(max-width: 640px) 170px, 210px"
       />
     </span>
   );

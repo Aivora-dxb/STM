@@ -37,7 +37,7 @@ export function Header() {
         scrolled && "shadow-glass-sm",
       )}
     >
-      <div className="container-x flex h-16 items-center justify-between">
+      <div className="container-x flex h-20 items-center justify-between">
         <Link href="/" aria-label={`${company.shortName} home`} className="flex items-center">
           <Logo className="h-8 w-auto" />
         </Link>

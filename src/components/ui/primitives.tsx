@@ -27,30 +27,49 @@ export function SectionHeader({
 }
 
 /** Glass product-category card. */
+/** Glass product-category card with a fitting background image. */
 export function ProductCard({
   href,
   name,
   tagline,
+  slug,
   delay = 0,
 }: {
   href: string;
   name: string;
   tagline: string;
+  slug?: string;
   delay?: number;
 }) {
+  const img = slug ? `/images/cat-${slug}.jpg` : undefined;
   return (
     <Reveal delay={delay} as="article">
       <Link
         href={href}
-        className="glass group flex h-full flex-col rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40"
+        className="group relative flex h-full min-h-[220px] flex-col justify-end overflow-hidden rounded-xl border border-white/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/50"
       >
-        <h3 className="font-display text-lg font-semibold text-white group-hover:text-accent-400">
-          {name}
-        </h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">{tagline}</p>
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-400">
-          View category
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+        {/* Background image */}
+        {img && (
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+            style={{ backgroundImage: `url(${img})` }}
+          />
+        )}
+        {/* Dark overlay for readability */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/25"
+        />
+        <span className="relative">
+          <h3 className="font-display text-lg font-semibold text-white group-hover:text-accent-400">
+            {name}
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-300">{tagline}</p>
+          <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-400">
+            View category
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </span>
         </span>
       </Link>
     </Reveal>
