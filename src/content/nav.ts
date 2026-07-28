@@ -23,13 +23,13 @@ export const footerLegal: NavItem[] = [
  * Logo files are placeholders until official brand assets are supplied —
  * see IMAGE_SOURCES.md. Names shown as text where no licensed logo is on file.
  */
-export type Partner = { name: string; url: string };
+export type Partner = { name: string; url: string; logo?: string };
 
 export const partners: Partner[] = [
   { name: "EXAKT", url: "https://www.exakt.de/" },
   { name: "Vibra", url: "https://www.vibra.co.jp/" },
   { name: "DRATEC", url: "https://dratec.de/" },
-  { name: "Guschky", url: "https://www.guschky.com/" },
+  { name: "Guschky", url: "https://www.guschky.com/", logo: "/images/partner-guschky.svg" },
   { name: "Zenith", url: "https://www.zenith.de/" },
   { name: "QGM", url: "https://www.qgmmould.com/" },
 ];
