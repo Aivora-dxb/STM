@@ -110,13 +110,13 @@ export default function AboutPage() {
           <Reveal className="lg:col-span-3">
             <div className="glass h-full rounded-2xl p-7 sm:p-8">
               <div className="flex items-center gap-4">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-accent-400/20 bg-accent-500/5">
+                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
                   <Image
                     src="/images/about/our-focus.png"
                     alt=""
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 object-contain"
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 object-contain"
                   />
                 </span>
                 <h2 className="font-display text-xl font-semibold text-white sm:text-2xl">
@@ -137,13 +137,13 @@ export default function AboutPage() {
           <Reveal delay={0.1} className="lg:col-span-2">
             <div className="glass flex h-full flex-col rounded-2xl p-7 sm:p-8">
               <div className="flex items-center gap-4">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-accent-400/20 bg-accent-500/5">
+                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
                   <Image
                     src="/images/about/where-we-are.png"
                     alt=""
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 object-contain"
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 object-contain"
                   />
                 </span>
                 <h2 className="font-display text-xl font-semibold text-white sm:text-2xl">
@@ -171,13 +171,13 @@ export default function AboutPage() {
           {values.map((v, i) => (
             <Reveal key={v.title} delay={(i % 4) * 0.05}>
               <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-white/[0.04]">
-                <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-accent-400/20 bg-accent-500/5">
+                <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
                   <Image
                     src={`/images/about/${v.icon}.png`}
                     alt=""
-                    width={30}
-                    height={30}
-                    className="h-[30px] w-[30px] object-contain"
+                    width={36}
+                    height={36}
+                    className="h-9 w-9 object-contain"
                   />
                 </span>
                 <h3 className="font-display text-base font-semibold text-white">

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Breadcrumb, JsonLd } from "@/components/ui/index";
 import { buildMetadata, pageSeo, breadcrumbJsonLd, localBusinessJsonLd } from "@/lib/seo";
-import { company, telHref, mailtoHref, whatsappUrl, mapsUrl } from "@/lib/company";
+import { company, telHref, mailtoHref, whatsappUrl, mapsUrl, mapsEmbedUrl } from "@/lib/company";
 
 export const metadata: Metadata = buildMetadata(pageSeo.contact);
 
@@ -98,18 +98,18 @@ export default function ContactPage() {
                 >
                   <span
                     className={[
-                      "mb-4 flex h-12 w-12 items-center justify-center rounded-xl border",
+                      "mb-4 flex h-[60px] w-[60px] items-center justify-center rounded-xl border",
                       "whatsapp" in c && c.whatsapp
-                        ? "border-emerald-400/20 bg-emerald-500/5"
-                        : "border-accent-400/20 bg-accent-500/5",
+                        ? "border-emerald-400/30 bg-emerald-500/10"
+                        : "border-accent-400/30 bg-accent-500/10",
                     ].join(" ")}
                   >
                     <Image
                       src={`/images/contact/${c.icon}.png`}
                       alt=""
-                      width={24}
-                      height={24}
-                      className="h-6 w-6 object-contain"
+                      width={36}
+                      height={36}
+                      className="h-9 w-9 object-contain"
                     />
                   </span>
                   <span className="font-display text-base font-semibold text-white">
@@ -139,13 +139,13 @@ export default function ContactPage() {
             {/* Right: larger address card */}
             <div className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-7">
               <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-accent-400/20 bg-accent-500/5">
+                <span className="flex h-[60px] w-[60px] items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
                   <Image
                     src="/images/contact/address.png"
                     alt=""
-                    width={22}
-                    height={22}
-                    className="h-[22px] w-[22px] object-contain"
+                    width={36}
+                    height={36}
+                    className="h-9 w-9 object-contain"
                   />
                 </span>
                 <h2 className="font-display text-lg font-semibold text-white">Address</h2>
@@ -171,38 +171,36 @@ export default function ContactPage() {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
 
-              {/* Map preview */}
-              <a
-                href={mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open STM MACHINERY location in Google Maps"
-                className="group mt-5 block overflow-hidden rounded-xl border border-white/10"
-              >
-                <span className="relative block aspect-[605/212] w-full">
-                  <Image
-                    src="/images/contact/map-preview.jpg"
-                    alt="Map showing STM MACHINERY location in Dubai Investment Park Second"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 ring-1 ring-inset ring-accent-400/10"
-                  />
-                </span>
-              </a>
+              {/* Map — embedded Google Map (correct location) with click-to-open overlay */}
+              <div className="group relative mt-5 overflow-hidden rounded-xl border border-white/10">
+                <iframe
+                  src={mapsEmbedUrl}
+                  title="Map showing STM MACHINERY location in Dubai Investment Park Second"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block aspect-[605/240] w-full grayscale-[0.2]"
+                />
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open STM MACHINERY location in Google Maps"
+                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-md bg-navy-950/85 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur transition-colors hover:bg-navy-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  Open in Google Maps
+                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </div>
 
               {/* Working hours */}
               <div className="mt-6 flex items-start gap-3 border-t border-white/10 pt-5">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent-400/20 bg-accent-500/5">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-accent-400/30 bg-accent-500/10">
                   <Image
                     src="/images/contact/hours.png"
                     alt=""
-                    width={20}
-                    height={20}
-                    className="h-5 w-5 object-contain"
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 object-contain"
                   />
                 </span>
                 <div>

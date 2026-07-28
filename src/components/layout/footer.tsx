@@ -13,28 +13,28 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200 bg-slate-50 text-slate-600" aria-label="Site footer">
-      <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-[#D8E1EB] bg-[#EDF2F7] text-[#526174]" aria-label="Site footer">
+      <div className="container-x grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-4 lg:gap-16">
         <div>
-          <Logo className="h-9 w-auto" />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
+          <Logo className="w-[150px]" />
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-[#526174]">
             Supplier of industrial machinery, equipment, spare parts and factory-development
             support in Dubai, United Arab Emirates.
           </p>
         </div>
 
         <nav aria-label="Footer" className="text-sm">
-          <h2 className="mb-4 font-display text-sm font-semibold text-navy">Explore</h2>
+          <h2 className="mb-4 font-display text-sm font-semibold text-[#102238]">Explore</h2>
           <ul className="space-y-2">
             {mainNav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-slate-600 hover:text-accent">
+                <Link href={item.href} className="text-[#526174] hover:text-accent">
                   {item.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/request-a-quotation" className="text-slate-600 hover:text-accent">
+              <Link href="/request-a-quotation" className="text-[#526174] hover:text-accent">
                 Request a Quotation
               </Link>
             </li>
@@ -42,8 +42,8 @@ export function Footer() {
         </nav>
 
         <div className="text-sm">
-          <h2 className="mb-4 font-display text-sm font-semibold text-navy">Contact</h2>
-          <ul className="space-y-3 text-slate-600">
+          <h2 className="mb-4 font-display text-sm font-semibold text-[#102238]">Contact</h2>
+          <ul className="space-y-3 text-[#526174]">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
               <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
@@ -73,11 +73,11 @@ export function Footer() {
         </div>
 
         <nav aria-label="Legal" className="text-sm">
-          <h2 className="mb-4 font-display text-sm font-semibold text-navy">Legal</h2>
+          <h2 className="mb-4 font-display text-sm font-semibold text-[#102238]">Legal</h2>
           <ul className="space-y-2">
             {footerLegal.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-slate-600 hover:text-accent">
+                <Link href={item.href} className="text-[#526174] hover:text-accent">
                   {item.label}
                 </Link>
               </li>
@@ -86,10 +86,10 @@ export function Footer() {
         </nav>
       </div>
 
-      <div className="border-t border-slate-200">
-        <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-slate-500 sm:flex-row">
+      <div className="border-t border-[#D8E1EB] bg-[#E4EBF3]">
+        <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-[#526174] sm:flex-row">
           <p>
-            © {year} {company.legalName}. All rights reserved.
+            © {year} {company.legalName} All rights reserved.
           </p>
           <p>Dubai, United Arab Emirates</p>
         </div>

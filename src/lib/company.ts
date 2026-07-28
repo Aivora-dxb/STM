@@ -67,7 +67,17 @@ export const telHref = `tel:${company.phone.e164}`;
 export const mailtoHref = `mailto:${company.email}`;
 
 /** Google Maps link built from the verified location. */
-export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${company.address.lat},${company.address.lng}`;
+export const mapsUrl = "https://maps.app.goo.gl/XsQYhtxDrjw2oh1Q6";
+
+/**
+ * Google Maps embed (no API key needed). Uses the full address string so the
+ * embedded map centers on the correct location — Warehouse G01, Turnkey
+ * Warehouse, Dubai Investment Park Second. The clickable "Open in Google Maps"
+ * link uses the short mapsUrl above.
+ */
+export const mapsEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(
+  `${company.legalName}, ${company.address.line1}, ${company.address.line2}, ${company.address.city}, ${company.address.country}`,
+)}&z=14&output=embed`;
 
 /** Full single-line address string. */
 export const addressLine = [

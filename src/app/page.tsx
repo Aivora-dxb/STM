@@ -23,16 +23,11 @@ export default function HomePage() {
       <Hero />
 
       {/* Company intro — single supplier */}
-      <section className="relative overflow-hidden">
-        {/* Faint technical blueprint / gear backdrop, concentrated at the edges */}
+      <section className="relative overflow-hidden bg-navy-950">
+        {/* Faint CSS-only engineering grid, concentrated at the edges. No image. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.10] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,transparent_35%,black_100%)]"
-          style={{ backgroundImage: "url(/images/home/blueprint-bg.jpg)" }}
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-navy-950/40 to-transparent"
+          className="eng-grid pointer-events-none absolute inset-0 opacity-[0.5] [mask-image:radial-gradient(ellipse_65%_60%_at_50%_50%,transparent_40%,black_100%)]"
         />
 
         <div className="container-x relative py-16 sm:py-20">
@@ -71,13 +66,13 @@ export default function HomePage() {
                     key={w.title}
                     className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-accent-400/40 hover:bg-white/[0.05]"
                   >
-                    <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-accent-400/20 bg-accent-500/5">
+                    <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
                       <Image
                         src={`/images/home/${w.icon}.png`}
                         alt=""
-                        width={28}
-                        height={28}
-                        className="h-7 w-7 object-contain"
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 object-contain"
                       />
                     </span>
                     <h3 className="font-display text-base font-semibold text-white">
