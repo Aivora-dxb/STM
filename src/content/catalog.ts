@@ -289,54 +289,65 @@ export const factoryStages: FactoryStage[] = [
 export type Service = {
   name: string;
   description: string;
+  icon: string;
 };
 
 export const services: Service[] = [
   {
     name: "Spare-parts supply",
+    icon: "spare-parts-supply",
     description: "Sourcing and supply of machinery and engine spare parts, consumables and wear parts.",
   },
   {
     name: "Preventive maintenance",
+    icon: "preventive-maintenance",
     description: "Planned maintenance coordination to reduce unplanned downtime and extend equipment life.",
   },
   {
     name: "Installation coordination",
+    icon: "installation-coordination",
     description: "Coordination of mechanical installation and integration, with specialist partners where required.",
   },
   {
     name: "Troubleshooting & diagnostics",
+    icon: "troubleshooting-diagnostics",
     description: "Support in diagnosing issues and identifying the parts or intervention needed.",
   },
   {
     name: "Machine upgrades & retrofitting",
+    icon: "machine-upgrades-retrofitting",
     description: "Coordination of upgrades and retrofits to improve capability or extend service life.",
   },
   {
     name: "Technical support",
+    icon: "technical-support",
     description: "On-site and remote technical support coordination, subject to scope and availability.",
   },
 ];
 
 // Reasons to work with STM — grounded, no unverifiable superlatives.
-export const whyStm: { title: string; description: string }[] = [
+export const whyStm: { title: string; description: string; icon: string }[] = [
   {
     title: "One supplier, many sectors",
+    icon: "one-supplier",
     description:
       "A single point of contact for machinery and equipment across manufacturing, energy, oil & gas, medical, agriculture and more.",
   },
   {
     title: "Procurement-focused approach",
+    icon: "procurement",
     description:
       "We help you specify, source and procure the right equipment rather than pushing a fixed catalogue.",
   },
   {
     title: "Factory from A–Z",
+    icon: "factory-a-z",
     description:
       "Support across the full journey — from requirement assessment to installation coordination and after-sales.",
   },
   {
     title: "After-sales & spares",
+    icon: "after-sales",
     description:
       "Ongoing support with spare parts, maintenance planning and technical coordination after delivery.",
   },

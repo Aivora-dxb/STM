@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/sections/hero";
@@ -48,7 +49,19 @@ export default function HomePage() {
           <Reveal delay={0.1}>
             <ul className="grid grid-cols-2 gap-3">
               {whyStm.map((w) => (
-                <li key={w.title} className="glass rounded-lg p-4">
+                <li
+                  key={w.title}
+                  className="rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-accent-400/40"
+                >
+                  <span className="mb-3 flex h-11 w-11 items-center justify-center rounded-lg border border-accent-400/20 bg-accent-500/5">
+                    <Image
+                      src={`/images/why/${w.icon}.png`}
+                      alt=""
+                      width={26}
+                      height={26}
+                      className="h-6 w-6 object-contain"
+                    />
+                  </span>
                   <p className="font-display text-sm font-semibold text-white">{w.title}</p>
                   <p className="mt-1.5 text-xs leading-relaxed text-slate-400">{w.description}</p>
                 </li>

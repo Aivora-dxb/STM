@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Breadcrumb, SectionHeader, CtaBand, Reveal, JsonLd } from "@/components/ui/index";
+import Image from "next/image";
+import { Breadcrumb, CtaBand, Reveal, JsonLd } from "@/components/ui/index";
 import { services } from "@/content/catalog";
 import { buildMetadata, pageSeo, breadcrumbJsonLd } from "@/lib/seo";
 
@@ -46,20 +47,52 @@ export default function ServicesPage() {
       />
       <Breadcrumb items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }]} />
 
-      <section className="container-x py-12 sm:py-16">
-        <SectionHeader
-          eyebrow="Services & after-sales"
-          title="Support through the equipment lifecycle"
-          lead="Our involvement doesn't end at delivery. We support clients with spare parts, maintenance planning, installation coordination and technical support to keep machinery running."
-          as="h1"
+      {/* Hero banner with photo */}
+      <div className="relative mt-4 overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url(/images/services/hero.jpg)" }}
         />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/40"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/30"
+        />
+        <div className="container-x relative py-16 sm:py-24">
+          <div className="max-w-xl">
+            <p className="eyebrow mb-3">Services &amp; after-sales</p>
+            <h1 className="text-3xl font-bold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:text-4xl lg:text-5xl">
+              Support through the equipment lifecycle
+            </h1>
+            <p className="mt-5 text-base leading-relaxed text-slate-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+              Our involvement doesn&apos;t end at delivery. We support clients with spare parts,
+              maintenance planning, installation coordination and technical support to keep
+              machinery running.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="container-x py-14 sm:py-16">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.name} delay={(i % 3) * 0.05}>
-              <div className="glass h-full rounded-xl p-6">
-                <h2 className="font-display text-base font-semibold text-white">{s.name}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{s.description}</p>
+              <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-white/[0.04]">
+                <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-accent-400/20 bg-accent-500/5">
+                  <Image
+                    src={`/images/services/${s.icon}.png`}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="h-8 w-8 object-contain"
+                  />
+                </span>
+                <h2 className="font-display text-lg font-semibold text-white">{s.name}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">{s.description}</p>
               </div>
             </Reveal>
           ))}
