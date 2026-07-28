@@ -92,13 +92,13 @@ export function IndustryCard({
   return (
     <Reveal delay={delay} as="li">
       <div className="glass-light flex flex-col items-center gap-3 rounded-xl px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-500/10 ring-1 ring-accent-400/20">
+        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 ring-1 ring-accent-400/20">
           <Image
             src={`/images/industries/${icon}.png`}
             alt=""
-            width={32}
-            height={32}
-            className="h-8 w-8 object-contain"
+            width={44}
+            height={44}
+            className="h-11 w-11 object-contain"
           />
         </span>
         <span className="text-sm font-medium text-slate-100">{name}</span>
