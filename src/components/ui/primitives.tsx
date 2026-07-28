@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Plane, Car, Flame, Zap, HeartPulse, Tractor, Factory, HardHat, Blocks, Building2, Briefcase, Landmark } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./reveal";
@@ -79,29 +79,39 @@ export function ProductCard({
 
 
 /** Breadcrumb navigation. */
-/** Industry card with a sector icon (PNG). */
+const industryIcons = {
+  Plane,
+  Car,
+  Flame,
+  Zap,
+  HeartPulse,
+  Tractor,
+  Factory,
+  HardHat,
+  Blocks,
+  Building2,
+  Briefcase,
+  Landmark,
+} as const;
+
+/** Industry card: a clean line icon in a subtle circular badge on a dark card. */
 export function IndustryCard({
   name,
   icon,
   delay = 0,
 }: {
   name: string;
-  icon: string;
+  icon: keyof typeof industryIcons;
   delay?: number;
 }) {
+  const Icon = industryIcons[icon];
   return (
     <Reveal delay={delay} as="li">
-      <div className="glass-light flex flex-col items-center gap-3 rounded-xl px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 ring-1 ring-accent-400/20">
-          <Image
-            src={`/images/industries/${icon}.png`}
-            alt=""
-            width={44}
-            height={44}
-            className="h-11 w-11 object-contain"
-          />
+      <div className="group flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-white/[0.04]">
+        <span className="flex h-20 w-20 items-center justify-center rounded-full border border-accent-400/25 bg-accent-500/5 transition-colors duration-300 group-hover:border-accent-400/50 group-hover:bg-accent-500/10">
+          <Icon className="h-9 w-9 text-accent-300" strokeWidth={1.5} aria-hidden="true" />
         </span>
-        <span className="text-sm font-medium text-slate-100">{name}</span>
+        <span className="text-base font-medium text-slate-100">{name}</span>
       </div>
     </Reveal>
   );

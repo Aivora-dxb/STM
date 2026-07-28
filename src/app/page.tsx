@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/sections/hero";
+import { FactoryStageCard } from "@/components/sections/factory-stage-card";
 import {
   SectionHeader,
   ProductCard,
@@ -106,17 +107,11 @@ export default function HomePage() {
           title="Support across your factory project"
           lead="From requirement assessment to after-sales, we coordinate the machinery side of establishing, expanding or upgrading a facility."
         />
-        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {factoryStages.map((stage, i) => (
-            <Reveal key={stage.step} delay={(i % 3) * 0.05} as="li">
-              <div className="glass h-full rounded-xl p-6">
-                <span className="font-display text-2xl font-bold text-accent-400/70">{stage.step}</span>
-                <h3 className="mt-2 font-display text-base font-semibold text-white">{stage.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{stage.description}</p>
-              </div>
-            </Reveal>
+            <FactoryStageCard key={stage.step} stage={stage} delay={(i % 3) * 0.05} />
           ))}
-        </ol>
+        </div>
         <div className="mt-8">
           <Link href="/factory-from-a-z" className="btn-secondary">
             Explore Factory From A–Z

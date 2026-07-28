@@ -192,29 +192,42 @@ export const productCategories: ProductCategory[] = [
 export type Industry = {
   slug: string;
   name: string;
-  /** PNG icon under /images/industries. */
-  icon: string;
+  /** lucide-react icon name — rendered as a clean line icon in a circular badge. */
+  icon:
+    | "Plane"
+    | "Car"
+    | "Flame"
+    | "Zap"
+    | "HeartPulse"
+    | "Tractor"
+    | "Factory"
+    | "HardHat"
+    | "Blocks"
+    | "Building2"
+    | "Briefcase"
+    | "Landmark";
 };
 
 export const industries: Industry[] = [
-  { slug: "aerospace", name: "Aerospace", icon: "aerospace" },
-  { slug: "automotive", name: "Automotive", icon: "automotive" },
-  { slug: "oil-and-gas", name: "Oil & Gas", icon: "oil-and-gas" },
-  { slug: "energy-power-generation", name: "Energy & Power Generation", icon: "energy-power-generation" },
-  { slug: "medical-healthcare", name: "Medical & Healthcare", icon: "medical-healthcare" },
-  { slug: "agriculture-food", name: "Agriculture & Food Production", icon: "agriculture-food" },
-  { slug: "manufacturing-fabrication", name: "Manufacturing & Fabrication", icon: "manufacturing-fabrication" },
-  { slug: "engineering-contracting", name: "Engineering & Contracting", icon: "engineering-contracting" },
-  { slug: "construction-materials", name: "Construction Materials", icon: "construction-materials" },
-  { slug: "industrial-plants", name: "Industrial Plants", icon: "industrial-plants" },
-  { slug: "trading-companies", name: "Trading Companies", icon: "trading-companies" },
-  { slug: "government-infrastructure", name: "Government & Infrastructure", icon: "government-infrastructure" },
+  { slug: "aerospace", name: "Aerospace", icon: "Plane" },
+  { slug: "automotive", name: "Automotive", icon: "Car" },
+  { slug: "oil-and-gas", name: "Oil & Gas", icon: "Flame" },
+  { slug: "energy-power-generation", name: "Energy & Power Generation", icon: "Zap" },
+  { slug: "medical-healthcare", name: "Medical & Healthcare", icon: "HeartPulse" },
+  { slug: "agriculture-food", name: "Agriculture & Food Production", icon: "Tractor" },
+  { slug: "manufacturing-fabrication", name: "Manufacturing & Fabrication", icon: "Factory" },
+  { slug: "engineering-contracting", name: "Engineering & Contracting", icon: "HardHat" },
+  { slug: "construction-materials", name: "Construction Materials", icon: "Blocks" },
+  { slug: "industrial-plants", name: "Industrial Plants", icon: "Building2" },
+  { slug: "trading-companies", name: "Trading Companies", icon: "Briefcase" },
+  { slug: "government-infrastructure", name: "Government & Infrastructure", icon: "Landmark" },
 ];
 
 export type FactoryStage = {
   step: string;
   name: string;
   description: string;
+  image: string;
 };
 
 // "Factory From A–Z" — worded as procurement and coordination support.
@@ -227,42 +240,49 @@ export const factoryStages: FactoryStage[] = [
     name: "Requirement assessment",
     description:
       "We work with you to understand your production goals, capacity needs and site constraints before any equipment is specified.",
+    image: "step-01",
   },
   {
     step: "02",
     name: "Equipment identification",
     description:
       "We help identify the machinery and equipment suited to your process, tolerances and output targets.",
+    image: "step-02",
   },
   {
     step: "03",
     name: "Supplier sourcing",
     description:
       "We source equipment from established manufacturers and coordinate commercial and technical details on your behalf.",
+    image: "step-03",
   },
   {
     step: "04",
     name: "Machinery & spare-parts procurement",
     description:
       "We coordinate procurement of machinery and the spare parts needed to keep it running from day one.",
+    image: "step-04",
   },
   {
     step: "05",
     name: "Shipment & documentation",
     description:
       "We coordinate shipment and supporting documentation to move equipment to your site.",
+    image: "step-05",
   },
   {
     step: "06",
     name: "Installation coordination",
     description:
       "We coordinate installation and, where required, work with specialist partners for integration, subject to project scope.",
+    image: "step-06",
   },
   {
     step: "07",
     name: "After-sales support",
     description:
       "We support you after delivery with spare parts, maintenance planning and technical coordination.",
+    image: "step-07",
   },
 ];
 

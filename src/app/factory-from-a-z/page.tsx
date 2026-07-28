@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Breadcrumb, SectionHeader, CtaBand, Reveal, JsonLd } from "@/components/ui/index";
+import { Breadcrumb, SectionHeader, CtaBand, JsonLd } from "@/components/ui/index";
+import { FactoryStageCard } from "@/components/sections/factory-stage-card";
 import { factoryStages } from "@/content/catalog";
 import { buildMetadata, pageSeo, breadcrumbJsonLd } from "@/lib/seo";
 
@@ -29,25 +30,12 @@ export default function FactoryPage() {
           as="h1"
         />
 
-        {/* Process timeline */}
-        <ol className="mt-12 space-y-4">
+        {/* Process steps with photo backgrounds */}
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {factoryStages.map((stage, i) => (
-            <Reveal key={stage.step} delay={(i % 4) * 0.04} as="li">
-              <div className="glass flex gap-5 rounded-xl p-6">
-                <span
-                  className="font-display text-2xl font-bold text-accent-400/60"
-                  aria-hidden="true"
-                >
-                  {stage.step}
-                </span>
-                <div>
-                  <h2 className="font-display text-base font-semibold text-white">{stage.name}</h2>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{stage.description}</p>
-                </div>
-              </div>
-            </Reveal>
+            <FactoryStageCard key={stage.step} stage={stage} delay={(i % 3) * 0.05} />
           ))}
-        </ol>
+        </div>
 
         <div className="glass-light mt-10 rounded-xl p-6">
           <p className="text-sm leading-relaxed text-slate-300">

@@ -60,3 +60,78 @@ If you add machinery/industrial photos:
   does not depict a real STM facility/project/employee/inventory item, and
   check it contains no unreadable fake control-panel text, fake safety
   markings, fake branding or impossible machinery.
+
+---
+
+## Update — hero & category images (added post-launch)
+
+| Local file | Type | Source | Licence status | Used on |
+|---|---|---|---|---|
+| `public/images/hero-cnc.jpg` | Photograph (CNC 5-axis machining) | **Supplied by client** | **License to be confirmed** — appears to be professional stock. STM to confirm it owns or has a commercial licence for this image before public launch. Does not depict an actual STM facility unless STM confirms otherwise. | Home hero background |
+| `public/images/cat-cnc-and-precision-machinery.jpg` | Photograph | Same as hero-cnc.jpg | Same as above | CNC category card |
+| `public/images/cat-*.jpg` (power, oil-gas, pumps, medical, agricultural, plant, spare-parts) | Generated gradient tiles | Created for this project (PIL) — abstract navy/steel gradients with a gear motif | Original project assets, no licence needed | Product-category cards — **placeholders** until STM supplies fitting licensed photos (drop a real photo in with the same filename to replace) |
+
+> **Action for STM:** (1) confirm the CNC hero photo is licensed/owned; (2) supply fitting, licensed photographs for the other seven categories to replace the gradient placeholders. Same filenames = automatic swap.
+
+---
+
+## Update 2 — all category photos supplied by client
+
+All seven remaining category placeholders were replaced with photographs
+**supplied by the client**. Each was navy-tinted for palette consistency and
+produced in two sizes: a 4:3 card image (`cat-<slug>.jpg`) and a wide banner
+(`cat-<slug>-wide.jpg`) used as the background of that category's detail page.
+
+| Category | Card file | Page banner file | Source | Licence status |
+|---|---|---|---|---|
+| CNC & Precision Machinery | `cat-cnc-and-precision-machinery.jpg` | `...-wide.jpg` | Client-supplied | **Confirm licence/ownership** |
+| Power Generation & Distribution | `cat-power-generation-and-distribution.jpg` | `...-wide.jpg` | Client-supplied | **Confirm licence/ownership** |
+| Oil, Gas & Drilling | `cat-oil-gas-and-drilling-equipment.jpg` | `...-wide.jpg` | Client-supplied | **Confirm licence/ownership** |
+| Pumps, Valves & Engines | `cat-pumps-valves-and-engines.jpg` | `...-wide.jpg` | Client-supplied | **Confirm licence/ownership** |
+| Medical & Surgical | `cat-medical-and-surgical-equipment.jpg` | `...-wide.jpg` | Client-supplied | **Confirm licence/ownership** |
+| Agricultural Machinery | `cat-agricultural-machinery.jpg` | `...-wide.jpg` | Client-supplied | **Confirm licence/ownership** |
+| Industrial Plant Equipment | `cat-industrial-plant-equipment.jpg` | `...-wide.jpg` | Client-supplied | **Confirm licence/ownership** |
+
+> These images appear to be AI-generated or stock. STM should confirm it owns
+> or has a commercial licence for each before public launch, and note that they
+> are illustrative — they do not depict actual STM facilities, projects or
+> inventory. The agricultural image shows a green tractor resembling a
+> recognisable brand livery; if brand association is a concern, replace it.
+
+---
+
+## Update 3 — spare-parts photo, industry icons, Guschky logo
+
+- **`cat-spare-parts.jpg` / `-wide.jpg`** — client-supplied photo of machined
+  engine components/bearings on a workbench. Navy-tinted for consistency.
+  Confirm licence/ownership; illustrative, not actual STM stock.
+- **`public/images/industries/*.png`** (8 files: aerospace, automotive,
+  agriculture-food, construction-materials, energy-power-generation,
+  engineering-contracting, government-infrastructure, industrial-plants) —
+  client-supplied blue line icons, recoloured to the site accent blue and made
+  transparent. The remaining 4 sectors (Oil & Gas, Medical & Healthcare,
+  Manufacturing & Fabrication, Trading Companies) use matching line icons from
+  the lucide-react library (MIT licence, already a project dependency) for a
+  consistent set.
+- **`public/images/partner-guschky.svg`** — official Guschky logo supplied by
+  client. Shown on the partners strip per confirmed reseller status. Remaining
+  partner brands (EXAKT, Vibra, DRATEC, Zenith, QGM) still shown as text until
+  their official logos are supplied.
+
+---
+
+## Update 4 — all industry icons + all partner logos supplied
+
+- **`public/images/industries/*.png`** — all 12 sector icons now use
+  client-supplied blue line/detailed icons (aerospace, automotive, oil-and-gas,
+  energy-power-generation, medical-healthcare, agriculture-food,
+  manufacturing-fabrication, engineering-contracting, construction-materials,
+  industrial-plants, trading-companies, government-infrastructure). Recoloured
+  to the site accent blue and made transparent. The earlier lucide-react
+  fallbacks are no longer used.
+- **Partner logos** — all six now use official supplied assets:
+  `partner-exakt.png`, `partner-vibra.png`, `partner-dratec.png`,
+  `partner-guschky.svg`, `partner-zenith.png`, `partner-qgm.png`. Displayed on
+  the partners strip per confirmed reseller status. Near-white backgrounds were
+  made transparent and logos trimmed to sit cleanly on the white tiles.
+  Retain reseller/dealer evidence on file.
