@@ -62,14 +62,34 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
         ]}
       />
 
-      <article className="container-x py-12 sm:py-16">
-        <p className="eyebrow mb-3">{cat.tagline}</p>
-        <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          {cat.name}
-        </h1>
-        <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-300">{cat.intro}</p>
+      {/* Category header banner with matching background image */}
+      <div className="relative mt-4 overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(/images/cat-${cat.slug}-wide.jpg)` }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/45"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/30"
+        />
+        <div className="container-x relative py-16 sm:py-20">
+          <p className="eyebrow mb-3">{cat.tagline}</p>
+          <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] sm:text-4xl lg:text-5xl">
+            {cat.name}
+          </h1>
+          <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]">
+            {cat.intro}
+          </p>
+        </div>
+      </div>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+      <article className="container-x py-12 sm:py-16">
+        <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <h2 className="font-display text-lg font-semibold text-white">What we supply</h2>
             <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
