@@ -25,7 +25,7 @@ export default function IndustriesPage() {
         />
         <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {industries.map((ind, i) => (
-            <IndustryCard key={ind.slug} name={ind.name} icon={ind.icon} lucide={ind.lucide} delay={(i % 4) * 0.04} />
+            <IndustryCard key={ind.slug} name={ind.name} icon={ind.icon} delay={(i % 4) * 0.04} />
           ))}
         </ul>
 

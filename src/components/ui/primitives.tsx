@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ChevronRight, Factory, Droplets, HeartPulse, Briefcase } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./reveal";
@@ -77,36 +77,29 @@ export function ProductCard({
   );
 }
 
-const lucideMap = { Factory, Droplets, HeartPulse, Briefcase } as const;
 
-/** Industry card with a sector icon. Accepts a PNG icon slug or a lucide name. */
+/** Breadcrumb navigation. */
+/** Industry card with a sector icon (PNG). */
 export function IndustryCard({
   name,
   icon,
-  lucide,
   delay = 0,
 }: {
   name: string;
-  icon?: string;
-  lucide?: keyof typeof lucideMap;
+  icon: string;
   delay?: number;
 }) {
-  const LucideIcon = lucide ? lucideMap[lucide] : null;
   return (
     <Reveal delay={delay} as="li">
       <div className="glass-light flex flex-col items-center gap-3 rounded-xl px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40">
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-500/10 ring-1 ring-accent-400/20">
-          {icon ? (
-            <Image
-              src={`/images/industries/${icon}.png`}
-              alt=""
-              width={32}
-              height={32}
-              className="h-8 w-8 object-contain"
-            />
-          ) : LucideIcon ? (
-            <LucideIcon className="h-7 w-7 text-accent-400" aria-hidden="true" strokeWidth={1.6} />
-          ) : null}
+          <Image
+            src={`/images/industries/${icon}.png`}
+            alt=""
+            width={32}
+            height={32}
+            className="h-8 w-8 object-contain"
+          />
         </span>
         <span className="text-sm font-medium text-slate-100">{name}</span>
       </div>
@@ -114,7 +107,6 @@ export function IndustryCard({
   );
 }
 
-/** Breadcrumb navigation. */
 export function Breadcrumb({ items }: { items: { name: string; href: string }[] }) {
   return (
     <nav aria-label="Breadcrumb" className="container-x pt-24">

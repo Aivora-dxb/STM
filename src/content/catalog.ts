@@ -192,23 +192,22 @@ export const productCategories: ProductCategory[] = [
 export type Industry = {
   slug: string;
   name: string;
-  /** PNG icon under /images/industries, or a lucide icon name for the 4 without a supplied icon. */
-  icon?: string;
-  lucide?: "Factory" | "Droplets" | "HeartPulse" | "Briefcase";
+  /** PNG icon under /images/industries. */
+  icon: string;
 };
 
 export const industries: Industry[] = [
   { slug: "aerospace", name: "Aerospace", icon: "aerospace" },
   { slug: "automotive", name: "Automotive", icon: "automotive" },
-  { slug: "oil-and-gas", name: "Oil & Gas", lucide: "Droplets" },
+  { slug: "oil-and-gas", name: "Oil & Gas", icon: "oil-and-gas" },
   { slug: "energy-power-generation", name: "Energy & Power Generation", icon: "energy-power-generation" },
-  { slug: "medical-healthcare", name: "Medical & Healthcare", lucide: "HeartPulse" },
+  { slug: "medical-healthcare", name: "Medical & Healthcare", icon: "medical-healthcare" },
   { slug: "agriculture-food", name: "Agriculture & Food Production", icon: "agriculture-food" },
-  { slug: "manufacturing-fabrication", name: "Manufacturing & Fabrication", lucide: "Factory" },
+  { slug: "manufacturing-fabrication", name: "Manufacturing & Fabrication", icon: "manufacturing-fabrication" },
   { slug: "engineering-contracting", name: "Engineering & Contracting", icon: "engineering-contracting" },
   { slug: "construction-materials", name: "Construction Materials", icon: "construction-materials" },
   { slug: "industrial-plants", name: "Industrial Plants", icon: "industrial-plants" },
-  { slug: "trading-companies", name: "Trading Companies", lucide: "Briefcase" },
+  { slug: "trading-companies", name: "Trading Companies", icon: "trading-companies" },
   { slug: "government-infrastructure", name: "Government & Infrastructure", icon: "government-infrastructure" },
 ];
 

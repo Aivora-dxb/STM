@@ -20,16 +20,15 @@ export const footerLegal: NavItem[] = [
 /**
  * Partner / supplier brands STM resells or sources from.
  * Displayed per confirmed reseller status (see CONTENT_REVIEW.md).
- * Logo files are placeholders until official brand assets are supplied —
- * see IMAGE_SOURCES.md. Names shown as text where no licensed logo is on file.
+ * Official logo assets supplied by the client.
  */
 export type Partner = { name: string; url: string; logo?: string };
 
 export const partners: Partner[] = [
-  { name: "EXAKT", url: "https://www.exakt.de/" },
-  { name: "Vibra", url: "https://www.vibra.co.jp/" },
-  { name: "DRATEC", url: "https://dratec.de/" },
+  { name: "EXAKT", url: "https://www.exakt.de/", logo: "/images/partner-exakt.png" },
+  { name: "Vibra", url: "https://www.vibra.co.jp/", logo: "/images/partner-vibra.png" },
+  { name: "DRATEC", url: "https://dratec.de/", logo: "/images/partner-dratec.png" },
   { name: "Guschky", url: "https://www.guschky.com/", logo: "/images/partner-guschky.svg" },
-  { name: "Zenith", url: "https://www.zenith.de/" },
-  { name: "QGM", url: "https://www.qgmmould.com/" },
+  { name: "Zenith", url: "https://www.zenith.de/", logo: "/images/partner-zenith.png" },
+  { name: "QGM", url: "https://www.qgmmould.com/", logo: "/images/partner-qgm.png" },
 ];
