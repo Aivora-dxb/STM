@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/sections/hero";
 import { FactoryStageCard } from "@/components/sections/factory-stage-card";
@@ -22,52 +22,75 @@ export default function HomePage() {
     <>
       <Hero />
 
-      {/* Company intro */}
-      <section className="container-x py-16 sm:py-20">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-          <Reveal>
-            <div>
-              <p className="eyebrow mb-3">Who we are</p>
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                A single supplier for machinery, equipment and factory projects
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-slate-300">
-                STM MACHINERY L.L.C. is a Dubai-based supplier of industrial machinery,
-                equipment and spare parts. We help manufacturers, factory owners and
-                industrial companies specify, source and procure the equipment they need —
-                and support them through installation coordination and after-sales.
-              </p>
-              <Link
-                href="/about"
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-400 link-underline"
-              >
-                More about STM MACHINERY
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <ul className="grid grid-cols-2 gap-3">
-              {whyStm.map((w) => (
-                <li
-                  key={w.title}
-                  className="rounded-xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-accent-400/40"
+      {/* Company intro — single supplier */}
+      <section className="relative overflow-hidden">
+        {/* Faint technical blueprint / gear backdrop, concentrated at the edges */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.10] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,transparent_35%,black_100%)]"
+          style={{ backgroundImage: "url(/images/home/blueprint-bg.jpg)" }}
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-navy-950/40 to-transparent"
+        />
+
+        <div className="container-x relative py-16 sm:py-20">
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            {/* Left: intro copy */}
+            <Reveal>
+              <div className="max-w-xl">
+                <p className="eyebrow mb-3">Who we are</p>
+                <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  A single supplier for machinery, equipment and factory projects
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-slate-300">
+                  <span className="font-semibold text-accent-400">
+                    STM MACHINERY L.L.C.
+                  </span>{" "}
+                  is a Dubai-based supplier of industrial machinery, equipment and spare
+                  parts. We help manufacturers, factory owners and industrial companies
+                  specify, source and procure the equipment they need — and support them
+                  through installation coordination and after-sales.
+                </p>
+                <Link
+                  href="/about"
+                  className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-400 link-underline"
                 >
-                  <span className="mb-3 flex h-11 w-11 items-center justify-center rounded-lg border border-accent-400/20 bg-accent-500/5">
-                    <Image
-                      src={`/images/why/${w.icon}.png`}
-                      alt=""
-                      width={26}
-                      height={26}
-                      className="h-6 w-6 object-contain"
-                    />
-                  </span>
-                  <p className="font-display text-sm font-semibold text-white">{w.title}</p>
-                  <p className="mt-1.5 text-xs leading-relaxed text-slate-400">{w.description}</p>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+                  More about STM MACHINERY
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </Reveal>
+
+            {/* Right: 2×2 icon cards */}
+            <Reveal delay={0.1}>
+              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {whyStm.map((w) => (
+                  <li
+                    key={w.title}
+                    className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-accent-400/40 hover:bg-white/[0.05]"
+                  >
+                    <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-accent-400/20 bg-accent-500/5">
+                      <Image
+                        src={`/images/home/${w.icon}.png`}
+                        alt=""
+                        width={28}
+                        height={28}
+                        className="h-7 w-7 object-contain"
+                      />
+                    </span>
+                    <h3 className="font-display text-base font-semibold text-white">
+                      {w.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                      {w.description}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
         </div>
       </section>
 

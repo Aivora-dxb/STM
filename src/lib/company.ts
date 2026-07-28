@@ -44,6 +44,12 @@ export const company = {
   url: "https://www.stm-machinery.ae",
   domain: "stm-machinery.ae",
 
+  // Business hours (Gulf Standard Time)
+  hours: {
+    display: "Monday – Friday: 9:00 AM – 6:00 PM (GST)",
+    short: "Mon–Fri, 9:00 AM – 6:00 PM GST",
+  },
+
   // Locale
   locale: "en",
   region: "AE",

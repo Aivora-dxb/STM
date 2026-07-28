@@ -341,7 +341,7 @@ export const whyStm: { title: string; description: string; icon: string }[] = [
   },
   {
     title: "Factory from A–Z",
-    icon: "factory-a-z",
+    icon: "factory-az",
     description:
       "Support across the full journey — from requirement assessment to installation coordination and after-sales.",
   },
