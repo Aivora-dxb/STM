@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Breadcrumb, CtaBand, Reveal, JsonLd } from "@/components/ui/index";
+import { CtaBand, Reveal, JsonLd } from "@/components/ui/index";
 import { buildMetadata, pageSeo, breadcrumbJsonLd } from "@/lib/seo";
 import { company } from "@/lib/company";
+import Link from "next/link";
 
 export const metadata: Metadata = buildMetadata(pageSeo.about);
 
@@ -35,158 +36,181 @@ export default function AboutPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", path: "/" },
-          { name: "About", path: "/about" },
+          { name: "Who we are", path: "/about" },
         ])}
       />
-      <Breadcrumb items={[{ name: "Home", href: "/" }, { name: "About", href: "/about" }]} />
 
-      {/* ===== Top section: intro + hero image ===== */}
-      <section className="relative overflow-hidden">
-        {/* Faint blueprint / grid backdrop */}
+      {/* ===== HERO: full-height engineer image on the right, copy overlapping on the left ===== */}
+      <section className="relative overflow-hidden bg-navy-950">
+        {/* Blueprint / grid / gear backdrop — decorative, low opacity */}
+        <div aria-hidden="true" className="eng-grid pointer-events-none absolute inset-0 opacity-70" />
         <div
           aria-hidden="true"
-          className="eng-grid pointer-events-none absolute inset-0 opacity-[0.6]"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 top-0 h-[420px] w-[420px] rounded-full bg-accent-500/10 blur-3xl"
+          className="pointer-events-none absolute inset-0 opacity-[0.06] [mask-image:linear-gradient(90deg,transparent,black)]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 60% 40%, rgba(91,141,201,0.5) 0, transparent 55%)",
+          }}
         />
 
-        <div className="container-x relative py-12 sm:py-16 lg:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-            {/* Left: copy */}
+        {/* Full-height hero image, right side, bleeding to the top/right edge */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] lg:block"
+        >
+          <div className="relative h-full w-full">
+            <Image
+              src="/images/about/hero-engineer.jpg"
+              alt=""
+              fill
+              sizes="52vw"
+              className="object-cover object-center"
+              priority
+            />
+            {/* Blend the image into the navy background on its left edge and base */}
+            <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/45 to-navy-950/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-navy-950/30" />
+          </div>
+        </div>
+
+        <div className="container-x relative">
+          <div className="max-w-2xl py-12 sm:py-16 lg:min-h-[560px] lg:py-24">
             <Reveal>
-              <div className="max-w-xl">
-                <p className="eyebrow mb-3">About us</p>
-                <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                  Who we are
-                </h1>
-                <p className="mt-5 text-base leading-relaxed text-slate-300">
-                  <span className="font-semibold text-accent-400">
-                    STM MACHINERY L.L.C.
-                  </span>{" "}
-                  is a Dubai-based supplier of industrial machinery, manufacturing
-                  equipment and spare parts. We support industries that depend on
-                  reliable machinery and complete production capabilities.
+              {/* Breadcrumb */}
+              <nav aria-label="Breadcrumb" className="mb-6 text-sm">
+                <ol className="flex items-center gap-2 text-slate-400">
+                  <li>
+                    <Link href="/" className="hover:text-accent-400">
+                      Home
+                    </Link>
+                  </li>
+                  <li aria-hidden="true" className="text-slate-600">
+                    ›
+                  </li>
+                  <li className="text-slate-300" aria-current="page">
+                    Who we are
+                  </li>
+                </ol>
+              </nav>
+
+              <p className="eyebrow mb-4">About us</p>
+              <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Who we are
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+                <span className="font-semibold text-accent-400">STM MACHINERY L.L.C.</span>{" "}
+                is a Dubai-based supplier of industrial machinery, manufacturing equipment
+                and spare parts. We support industries that depend on reliable machinery and
+                complete production capabilities.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Mobile/tablet hero image (shown below the copy where the side image is hidden) */}
+          <Reveal delay={0.1}>
+            <div className="relative mb-12 overflow-hidden rounded-2xl border border-white/10 shadow-glass lg:hidden">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src="/images/about/hero-engineer.jpg"
+                  alt="STM engineer inspecting industrial machinery on the factory floor"
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950/70 via-navy-900/20 to-transparent" />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== MIDDLE: Our focus (wide) + Where we are (narrow) ===== */}
+      <section className="relative bg-navy-950">
+        <div aria-hidden="true" className="eng-grid pointer-events-none absolute inset-0 opacity-40" />
+        <div className="container-x relative pb-6">
+          <div className="grid gap-6 lg:grid-cols-5 lg:gap-7">
+            {/* Our focus */}
+            <Reveal className="lg:col-span-3">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-8 sm:p-10">
+                <div className="flex items-center gap-5">
+                  <Image
+                    src="/images/about/our-focus.png"
+                    alt=""
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 shrink-0 object-contain"
+                  />
+                  <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+                    Our focus
+                  </h2>
+                </div>
+                <p className="mt-6 text-base leading-relaxed text-slate-300">
+                  We help manufacturers, factory owners, contractors and procurement teams
+                  identify, source and procure the machinery and equipment their operations
+                  require. Our role spans supply, sourcing, procurement coordination,
+                  installation coordination and after-sales support — across sectors from
+                  manufacturing and energy to oil &amp; gas, medical and agriculture.
                 </p>
               </div>
             </Reveal>
 
-            {/* Right: hero image with dark-blue overlay */}
-            <Reveal delay={0.1}>
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-glass">
-                <div className="relative aspect-[16/10] w-full">
+            {/* Where we are */}
+            <Reveal delay={0.1} className="lg:col-span-2">
+              <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-8 sm:p-10">
+                <div className="flex items-center gap-5">
                   <Image
-                    src="/images/about/hero-engineer.jpg"
-                    alt="STM engineer inspecting industrial machinery on the factory floor"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                    priority
+                    src="/images/about/where-we-are.png"
+                    alt=""
+                    width={56}
+                    height={56}
+                    className="h-14 w-14 shrink-0 object-contain"
                   />
-                  {/* Dark blue overlay to integrate with the site */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-tr from-navy-950/80 via-navy-900/30 to-transparent"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-navy-900/10 mix-blend-multiply"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-accent-400/10"
-                  />
+                  <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
+                    Where we are
+                  </h2>
                 </div>
+                <p className="mt-6 text-base leading-relaxed text-slate-300">
+                  {company.address.line1}, {company.address.line2}, {company.address.city},{" "}
+                  {company.address.country}
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-slate-400">
+                  Based in Dubai and serving clients across the UAE and the wider region.
+                </p>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ===== Middle section: focus + location ===== */}
-      <section className="container-x pb-4">
-        <div className="grid gap-6 lg:grid-cols-5">
-          <Reveal className="lg:col-span-3">
-            <div className="glass h-full rounded-2xl p-7 sm:p-8">
-              <div className="flex items-center gap-4">
-                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
-                  <Image
-                    src="/images/about/our-focus.png"
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 object-contain"
-                  />
-                </span>
-                <h2 className="font-display text-xl font-semibold text-white sm:text-2xl">
-                  Our focus
-                </h2>
-              </div>
-              <p className="mt-5 text-sm leading-relaxed text-slate-300 sm:text-base">
-                We help manufacturers, factory owners, contractors and procurement
-                teams identify, source and procure the machinery and equipment their
-                operations require. Our role spans supply, sourcing, procurement
-                coordination, installation coordination and after-sales support —
-                across sectors from manufacturing and energy to oil &amp; gas, medical
-                and agriculture.
-              </p>
-            </div>
-          </Reveal>
+      {/* ===== LOWER: What we stand for ===== */}
+      <section className="relative bg-navy-950">
+        <div aria-hidden="true" className="eng-grid pointer-events-none absolute inset-0 opacity-40" />
+        <div className="container-x relative py-16 sm:py-20">
+          {/* Heading + divider line extending right */}
+          <div className="flex items-center gap-6">
+            <h2 className="shrink-0 font-display text-3xl font-bold text-white sm:text-4xl">
+              What we stand for
+            </h2>
+            <span aria-hidden="true" className="h-px flex-1 bg-white/15" />
+          </div>
 
-          <Reveal delay={0.1} className="lg:col-span-2">
-            <div className="glass flex h-full flex-col rounded-2xl p-7 sm:p-8">
-              <div className="flex items-center gap-4">
-                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
-                  <Image
-                    src="/images/about/where-we-are.png"
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 object-contain"
-                  />
-                </span>
-                <h2 className="font-display text-xl font-semibold text-white sm:text-2xl">
-                  Where we are
-                </h2>
-              </div>
-              <p className="mt-5 text-sm leading-relaxed text-slate-300">
-                {company.address.line1}, {company.address.line2},{" "}
-                {company.address.city}, {company.address.country}
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-slate-400">
-                Based in Dubai and serving clients across the UAE and the wider region.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ===== Bottom section: values ===== */}
-      <section className="container-x py-14 sm:py-16">
-        <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">
-          What we stand for
-        </h2>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {values.map((v, i) => (
-            <Reveal key={v.title} delay={(i % 4) * 0.05}>
-              <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-white/[0.04]">
-                <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-accent-400/30 bg-accent-500/10">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map((v, i) => (
+              <Reveal key={v.title} delay={(i % 4) * 0.05}>
+                <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-accent-400/40 hover:bg-white/[0.04]">
                   <Image
                     src={`/images/about/${v.icon}.png`}
                     alt=""
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 object-contain"
+                    width={44}
+                    height={44}
+                    className="mb-5 h-11 w-11 object-contain"
                   />
-                </span>
-                <h3 className="font-display text-base font-semibold text-white">
-                  {v.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{v.body}</p>
-              </div>
-            </Reveal>
-          ))}
+                  <h3 className="font-display text-lg font-semibold text-white">{v.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-400">{v.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
